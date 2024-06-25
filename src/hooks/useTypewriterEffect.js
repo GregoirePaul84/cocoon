@@ -1,27 +1,31 @@
-import { useState, useEffect } from 'react';
+
+import { useState, useEffect, useMemo } from 'react';
 
 const useTypewriterEffect = (words, speed, currentSlide, index) => {
     const [text, setText] = useState('');
     const [isTypingDone, setIsTypingDone] = useState(false);
     const [cursorVisible, setCursorVisible] = useState(true);
 
+    // Memoize fullText to avoid recomputation on every render
+    const fullText = useMemo(() => words.join('\n'), [words]);
+
     useEffect(() => {
         let timer;
         if (index === currentSlide) {
-            if (text.length < words.join(' ').length) {
+            if (text.length < fullText.length) {
                 timer = setTimeout(() => {
-                    setText((prev) => prev + words.join(' ')[text.length]);
+                    setText((prev) => prev + fullText.charAt(text.length));
                 }, speed);
             } else {
                 setIsTypingDone(true);
             }
         } else {
-            // Clear text and reset state when the slide is not active
+            // Reset text when the slide is not active
             setText('');
             setIsTypingDone(false);
         }
         return () => clearTimeout(timer);
-    }, [text, currentSlide, index, words, speed]);
+    }, [text, currentSlide, index, fullText, speed]); // fullText is now stable unless words change
 
     useEffect(() => {
         let cursorTimer;

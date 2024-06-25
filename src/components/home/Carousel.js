@@ -38,7 +38,7 @@ const Carousel = () => {
   };
 
   return (
-    <Slider {...settings}>
+    <Slider className='custom-slider' {...settings} >
        <Stack
           sx={{
               minHeight: '100vh',

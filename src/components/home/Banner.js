@@ -1,12 +1,10 @@
-import { Box, Container, Divider, Stack, Typography, Button } from '@mui/material';
+import { Container, Divider, Stack, Typography, Button } from '@mui/material';
 import React from 'react';
 import useTypewriterEffect from '../../hooks/useTypewriterEffect';
 
 const Banner = ({ index, topTitle, bottomTitle, description, currentSlide }) => {
 
     const [text, cursorVisible] = useTypewriterEffect([topTitle, bottomTitle], 75, currentSlide, index);
-
-    console.log('le slide =>', currentSlide);
 
     return (
         <Container
@@ -18,32 +16,57 @@ const Banner = ({ index, topTitle, bottomTitle, description, currentSlide }) => 
         >
             <Stack
                 minHeight='100vh'
-                paddingTop='25vh'
+                paddingTop='24vh'
             >
                 <Stack 
-                    spacing={2}
+                    spacing={3}
                 >
-                    <Box minHeight='calc(6.2em * 1.1)'>
+                    <Stack 
+                        alignItems='center'
+                        sx={{
+                            minHeight: {
+                                xs: 'calc(6em * 1.2)',
+                                sm: 'calc(8em * 1.2)',
+                                md: 'calc(8em * 1.2)',
+                                lg: 'calc(10em * 1.2)'
+                            }
+                        }}
+                    >
                         <Typography
                             align='center'
                             color={'#fff'}
                             component={'h2'}
                             fontFamily={'Cormorant, serif'}
-                            fontSize={'3.1em'}
                             fontWeight={'700'}
                             letterSpacing={'-1.5px'}
-                            lineHeight={'1.1'}
+                            lineHeight={'1.2'}
                             whiteSpace={'pre-line'}
+                            sx={{
+                                maxWidth: {
+                                    xs: '300px',
+                                    sm: '350px',
+                                    md: '400px',
+                                    lg: '430px'
+                                },
+                                fontSize: {
+                                    xs: '3em',
+                                    sm: '4em',
+                                    md: '4.5em',
+                                    lg: '5em'
+                                }
+                            }}
                         >
-                            {text}<span style={{ opacity: cursorVisible ? 1 : 0 }}>|</span>
+                            {text}
+                            <span style={{ opacity: cursorVisible ? 1 : 0 }}>|</span>
                         </Typography>
-                    </Box>
+                    </Stack>
                     <Divider
                         variant='middle'
                         sx={{
-                            width: '100px',
+                            width: '9vw',
+                            minWidth: '100px',
                             borderColor: '#EAC985',
-                            borderBottomWidth: '2px',
+                            borderBottomWidth: '2.5px',
                             alignSelf: 'center'
                         }}
                     />
@@ -52,11 +75,23 @@ const Banner = ({ index, topTitle, bottomTitle, description, currentSlide }) => 
                             align='center'
                             component='p'
                             color='#fff'
-                            fontSize='1.1em'
                             fontFamily='Dosis, sans-serif'
                             fontWeight='100'
                             lineHeight='2.5'
-                            maxWidth='500px'
+                            sx={{
+                                maxWidth: {
+                                    xs: '350px',
+                                    sm: '65vw',
+                                    md: '500px',
+                                    xl: '700px'
+                                },
+                                fontSize: {
+                                    xs: '1em',
+                                    sm: '1.6em',
+                                    md: '1.4em',
+                                    xl: '1.6em'
+                                }
+                            }}
                         >
                             { description }
                         </Typography> 
@@ -72,9 +107,15 @@ const Banner = ({ index, topTitle, bottomTitle, description, currentSlide }) => 
                             variant='contained'
                             sx={{ 
                                 width: 'fit-content',
-                                padding: '5px 16px 6px 16px',
+                                padding: {
+                                    sx: '5px 16px 6px 16px',
+                                    sm: '7px 20px 8px 20px',
+                                },
                                 fontFamily: 'Dosis, sans-serif',
-                                fontSize: '0.9em',
+                                fontSize: {
+                                    xs: '0.9em',
+                                    sm: '1.15em',
+                                },
                                 fontWeight: '600',
                                 textTransform: 'initial',
                                 color: '#3E3E3E',

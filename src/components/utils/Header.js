@@ -21,17 +21,19 @@ const Header = () => {
         <AppBar 
             position='absolute'
             sx={{
-                height: '70px',
+                height: {
+                    xs: '70px',
+                    sm: '80px',
+                    md: '100px'
+                },
                 width: '100%',
-                // bgcolor: '#504131e6',
                 bgcolor: 'transparent',
                 boxShadow: 'none'
             }}
         >
             <Toolbar
                 sx={{
-                    height: '100%',
-                    width: '100vw',
+                    // width: '100vw',
                     justifyContent: 'space-between'
                 }}
             >
@@ -47,7 +49,8 @@ const Header = () => {
                     color="inherit"
                     aria-label="menu"
                     sx={{
-                        padding: '0'
+                        padding: '0',
+                        display: { xs: 'block', md: 'none' },
                     }}
                     onClick={handleOpenNavMenu}
                 >
@@ -75,8 +78,8 @@ const Header = () => {
                     }}
                 >
                     {pages.map((page) => (
-                        <a href={`#${page.toLowerCase()}`} style={{ textDecoration: 'none', color: 'inherit' }}>
-                            <MenuItem key={page} onClick={handleCloseNavMenu}>
+                        <a key={page} href={`#${page.toLowerCase()}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                            <MenuItem onClick={handleCloseNavMenu}>
                             <Typography 
                                 align="center" 
                                 fontFamily='"Dosis", sans-serif'
