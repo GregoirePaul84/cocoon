@@ -1,4 +1,4 @@
-import { Container, Box, Stack } from '@mui/material';
+import { Container, Box, Stack, Grid } from '@mui/material';
 import React from 'react';
 import ServiceCard from './ServiceCard';
 import cameraImg from '../../medias/images/camera.webp';
@@ -80,42 +80,49 @@ const servicesContent = [
 const Services = () => {
     return (
         <Box
-            marginTop='200px'
             bgcolor='#CBA67E'
+            sx={{
+                marginTop: {
+                    xs: '150px',
+                    md: '200px'
+                },
+            }}
         >
             <Container
+                maxWidth={false}
                 sx={{
                     width: '100vw',
-                    padding: '40px 7%',
+                    padding: {
+                        xs: '40px 7% 60px 7%',
+                        md: '40px 7% 80px 7%'
+                    }
                 }}
             >
-                <Stack
+                <Grid
                     id='services'
-                    rowGap='40px'
-                    alignItems='center'
-                    marginTop='-218px'
+                    container
+                    spacing={5}
+                    align="center" 
                     sx={{
-                        scrollMarginTop: '70px'
+                        marginTop: '-218px',
+                        scrollMarginTop: '70px',
                     }}
-                >
-                    {
-                        servicesContent.map((card) => {
-                            return(
-                                <ServiceCard 
-                                    key={card.id}
-                                    bgcolor={card.bgcolor} 
-                                    borderColor={card.borderColor} 
-                                    dividerColor={card.dividerColor}
-                                    titleColor={card.titleColor}
-                                    textColor={card.textColor}
-                                    img={card.img}
-                                    title={card.title}
-                                    description={card.description}
-                                />
-                            )
-                        })
-                    }
-                </Stack>
+                    >
+                    {servicesContent.map((card) => (
+                        <Grid item xs={12} sm={12} md={6} lg={4} key={card.id} >
+                            <ServiceCard 
+                                bgcolor={card.bgcolor} 
+                                borderColor={card.borderColor} 
+                                dividerColor={card.dividerColor}
+                                titleColor={card.titleColor}
+                                textColor={card.textColor}
+                                img={card.img}
+                                title={card.title}
+                                description={card.description}
+                            />
+                        </Grid>
+                    ))}
+                </Grid>                
             </Container>
         </Box>
     );

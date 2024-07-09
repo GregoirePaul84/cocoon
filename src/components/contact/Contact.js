@@ -12,7 +12,7 @@ const Contact = () => {
                 scrollMarginTop: '70px'
             }}
         >
-            <Stack marginBottom='40px' >
+            <Stack spacing={2} marginBottom='40px' >
                 <Typography
                     align='center'
                     padding='0 16px'
@@ -22,6 +22,16 @@ const Contact = () => {
                     color='#5a371d'
                 >
                     Vous avez <span style={{ fontWeight: '700' }} >d'autres questions</span> ou <span style={{ fontWeight: '700' }}>souhaitez nous contacter ?</span>
+                </Typography>
+                <Typography
+                    align='center'
+                    padding='0 16px'
+                    fontFamily='"Dosis", sans-serif'
+                    fontSize='1.4em'
+                    fontWeight='500'
+                    color='#5a371d'
+                >
+                    Contactez-nous au <strong>04.48.15.08.72</strong> ou remplissez le formulaire ci-dessous !
                 </Typography>
             </Stack>
             <ContactForm />

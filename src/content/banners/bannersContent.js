@@ -14,7 +14,7 @@ export const bannersContent = [
     {
         id: 2,
         topTitle: 'Une gestion',
-        bottomTitle: 'de A à Z',
-        description: <>Notre <strong>gestion intégrale</strong> vous libère de toute contrainte, vous permettant de <strong>profiter pleinement de votre investissement</strong> sans en subir les tracas quotidiens.</>
+        bottomTitle: 'sur-mesure',
+        description: <>Choisissez parmi <strong>nos formules flexibles</strong> pour une gestion personnalisée qui vous <strong>libère des contraintes</strong>, tout en maximisant la rentabilité de votre investissement.</>
     },
 ]

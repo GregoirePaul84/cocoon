@@ -1,16 +1,36 @@
 import { Box, Button, Card, Collapse, Divider, Stack, Typography } from '@mui/material';
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import PriceServices from './PriceServices';
+import { useScroll } from '../utils/ScrollContext';
 
 const PriceCard = ({ bgGradient, bgImg, bgColor, title, subtitle, price, servicesList }) => {
 
+    const timeoutRef = useRef(null);
+
     const [showServices, setShowServices] = useState(false);
+
+    const { locomotiveScroll } = useScroll();
 
     const handleServicesDisplay = () => {
         setShowServices(!showServices);
+        if (locomotiveScroll) {
+            setTimeout(() => {
+                locomotiveScroll.update();
+              }, 500); 
+        }
     }
+
+    useEffect(() => {
+        const currentTimeout = timeoutRef.current;
+    
+        return () => {
+            if (currentTimeout) {
+                clearTimeout(currentTimeout);
+            }
+        };
+    }, []);
 
     return (
         <Card
@@ -98,7 +118,8 @@ const PriceCard = ({ bgGradient, bgImg, bgColor, title, subtitle, price, service
                     </Stack>
                     <Stack 
                         alignItems='center'
-                        onClick={handleServicesDisplay}
+                        onClick={() => handleServicesDisplay()}
+                        marginTop='20px'
                     >
                         <Button sx={{ width: 'fit-content', border: '1px solid #EAC985' }} >
                             <Typography

@@ -31,10 +31,19 @@ const Skills = () => {
         <Container
             sx={{
                 width: '100vw',
-                padding: '48px 7%',
+                padding: '60px 7%',
             }}
         >
-            <Stack spacing={8}>
+            <Stack 
+                direction={{
+                    xs: 'column',
+                    md: 'row'
+                }}
+                spacing={{
+                    xs: 8,
+                    md: 4
+                }}
+            >
                 {
                     skillsContent.map((card) => {
                         return(

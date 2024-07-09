@@ -1,6 +1,6 @@
 import { Box, Stack, Typography } from '@mui/material';
 import React from 'react';
-import logoSrc from '../../medias/images/logo.svg';
+import logoSrc from '../../medias/images/logo_2.svg';
 import PhoneIcon from '@mui/icons-material/Phone';
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 import PlaceIcon from '@mui/icons-material/Place';
@@ -15,7 +15,7 @@ const Footer = () => {
                     src={logoSrc} 
                     alt="logo conciergerie cocoon" 
                     style={{
-                        width: '50%'
+                        width: '150px'
                     }}
                 />
                 <Stack direction='row' spacing={1} >

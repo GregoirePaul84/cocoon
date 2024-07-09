@@ -17,7 +17,7 @@ const BenefitCard = ({ icon, title, text }) => {
                     borderRadius: '50%',
                     bgcolor: '#EAC985',
                     border: '2px solid #6C462A',
-                    boxShadow: '-15px -17.5px 0 #6C462A'
+                    boxShadow: '-15px -17.5px 0 #6C462A',
                 }}
             >
                 {icon}
@@ -41,9 +41,12 @@ const BenefitCard = ({ icon, title, text }) => {
                 fontFamily='Dosis, sans-serif'
                 fontSize='1.2em'
                 fontWeight='400'
-                // letterSpacing='-1.5px'
                 sx={{
-                    color: '#C69F73'
+                    color: '#C69F73',
+                    padding: {
+                        xs: '0',
+                        sm: '0 20px',
+                    }
                 }}
             >
                 {text}

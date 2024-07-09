@@ -22,7 +22,7 @@ const MapComponent = () => {
     const onLoad = useCallback(function callback(map) {
         map.setCenter(rochegudeCenter);
         map.setZoom(9); 
-    }, [rochegudeCenter]);
+    }, []);
 
     const onUnmount = useCallback(function callback(map) {
         if (window.google && window.google.maps) {
@@ -38,7 +38,7 @@ const MapComponent = () => {
             onLoad={onLoad}
             onUnmount={onUnmount}
             options={{
-                gestureHandling: "cooperative",
+                gestureHandling: "cooperative"
             }}
         >
             <Circle

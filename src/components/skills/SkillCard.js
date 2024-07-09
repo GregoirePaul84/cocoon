@@ -3,8 +3,14 @@ import React from 'react';
 
 const SkillCard = ({ icon, title, description }) => {
     return (
-        <Stack spacing={2}>
-            <Stack direction='row' spacing={2}>
+        <Stack 
+            spacing={2} 
+        >
+            <Stack 
+                direction='row' 
+                spacing={2}
+                justifyContent='center'
+            >
                 <Stack
                     justifyContent='center'
                     alignItems='center'
@@ -44,6 +50,7 @@ const SkillCard = ({ icon, title, description }) => {
                 </Stack>
             </Stack>
             <Typography
+                align='center'
                 fontFamily='Dosis, sans-serif'
                 fontSize='1.3em'
                 fontWeight='400'

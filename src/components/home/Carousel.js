@@ -11,7 +11,7 @@ import Banner from "./Banner";
 // Import du contenu
 import { bannersContent } from '../../content/banners/bannersContent';
 
-// Import des images de fond
+// Import des images de fond / mobile / tablette
 import img1 from '../../medias/images/house-8274529_1280.jpg';
 import img2 from '../../medias/images/pexels-rachel-claire-4577191.jpg';
 import img3 from '../../medias/images/pexels-jonathanborba-5563472.jpg';
@@ -46,7 +46,7 @@ const Carousel = () => {
               backgroundImage: `linear-gradient(180deg, rgb(0 0 0 / 17%) 0%, rgb(0 0 0 / 58%) 50%, rgb(0 0 0 / 75%) 100%), url(${img1})`,
               backgroundSize: 'cover',
               backgroundRepeat: 'no-repeat',
-              backgroundPosition: 'center',
+              backgroundPosition: 'center bottom 30%',
               flexShrink: '0',
               justifyContent: 'flex-end'
           }}
@@ -66,7 +66,7 @@ const Carousel = () => {
               backgroundImage: `linear-gradient(180deg, rgb(0 0 0 / 17%) 0%, rgb(0 0 0 / 58%) 50%, rgb(0 0 0 / 75%) 100%), url(${img2})`,
               backgroundSize: 'cover',
               backgroundRepeat: 'no-repeat',
-              backgroundPosition: 'center',
+              backgroundPosition: 'center bottom 30%',
               flexShrink: '0',
               justifyContent: 'flex-end'
           }}

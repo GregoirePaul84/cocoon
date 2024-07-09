@@ -18,7 +18,7 @@ const ServiceCard = ({ bgcolor, borderColor, dividerColor, titleColor, textColor
                 height='calc(100% - 40px)'
                 width='calc(100% - 40px)'
                 alignItems='center'
-                padding='20px'
+                padding='30px 20px 20px 20px'
                 margin='20px'
                 border={`1px solid ${borderColor}`}
                 sx={{
@@ -52,24 +52,26 @@ const ServiceCard = ({ bgcolor, borderColor, dividerColor, titleColor, textColor
                     {title}
 
                 </Typography>
-                <Stack direction='row' alignItems='center'>
+                <Stack direction='row' alignItems='center' position='relative' top='5px'>
                     <Divider sx={{ width: '48px', marginRight: '10px', borderColor: dividerColor}} />
                     <Box height='10px' width='10px' borderRadius='50%' bgcolor={dividerColor} />
                     <Divider sx={{ width: '48px', marginLeft: '10px', borderColor: dividerColor}} />
                 </Stack>
-                <Typography
-                    component='p'
-                    align='center'
-                    fontFamily='Dosis, sans-serif'
-                    fontSize='1.2em'
-                    fontWeight='200'
-                    lineHeight='2'
-                    sx={{
-                        color: textColor
-                    }}
-                >
-                    {description}
-                </Typography>
+                <Stack flexGrow='1' justifyContent='center'>
+                    <Typography
+                        component='p'
+                        align='center'
+                        fontFamily='Dosis, sans-serif'
+                        fontSize='1.2em'
+                        fontWeight='200'
+                        lineHeight='2'
+                        sx={{
+                            color: textColor
+                        }}
+                    >
+                        {description}
+                    </Typography>
+                </Stack>
             </Stack>
 
         </Card>

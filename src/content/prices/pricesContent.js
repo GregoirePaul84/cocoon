@@ -9,7 +9,7 @@ export const pricesContent = [
         bgImg: goldKeyImg,
         bgColor: '#71582D',
         title: <>Service "clés en <br />main"</>,
-        subtitle: 'Pour les propriétaires n\'habitant par sur place ou qui souhaitent un service de A à Z',
+        subtitle: 'Pour les propriétaires qui souhaitent une gestion totale et sans soucis de leur propriété',
         price: '25%',
         servicesList: [
             {
@@ -91,7 +91,7 @@ export const pricesContent = [
         bgImg: bronzeKeyImg,
         bgColor: '#68563A',
         title: <>Service "clés en <br />essentielles"</>,
-        subtitle: 'Pour les propriétaires n\'habitant par sur place ou qui souhaitent un service de A à Z',
+        subtitle: 'Pour les propriétaires principalement intéressés par la gestion des aspects essentiels de la location',
         price: '15%',
         servicesList: [
             {

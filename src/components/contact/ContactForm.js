@@ -21,14 +21,14 @@ const CustomRadio = styled(Radio)({
 });
 
 const CustomTextarea = styled('textarea')({
-    width: '100%',
     padding: '10px',
     borderRadius: '4px',
     outline: 'none',
+    resize: 'none',
     '&:focus': {
       outline: '1px solid #987349', 
       boxShadow: '0 0 5px rgba(0, 123, 255, 0.5)' 
-    }
+    },
   });
 
 const ContactForm = () => {
@@ -71,13 +71,44 @@ const ContactForm = () => {
                     Informations personnelles
                 </Typography>
             </Stack>
-            <Stack spacing={4} direction="column" marginBottom='40px' >
+            <Stack 
+                spacing={{
+                    xs: 4,
+                    sm: 0
+                }} 
+                direction={{
+                    xs: 'column',
+                    sm: 'row'
+                }}
+                marginBottom='40px' 
+                sx={{
+                    flexWrap: {
+                        xs: 'nowrap',
+                        sm: 'wrap'
+                    },
+                    alignItems: {
+                        xs: 'center',
+                        sm: 'flex-start'
+                    },
+                    justifyContent: {
+                        xs: 'flex-start',
+                        sm: 'space-between'
+                    },
+                    rowGap: '40px'
+                }}
+            >
                 <CustomTextField 
                     label="Nom" 
                     variant="outlined" 
                     name="nom" 
                     value={formData.nom} 
                     onChange={handleChange}
+                    sx={{
+                        width: {
+                            xs: '100%',
+                            sm: '45%'
+                        }
+                    }}
                 />
                 <CustomTextField 
                     label="Prénom" 
@@ -85,6 +116,12 @@ const ContactForm = () => {
                     name="prenom" 
                     value={formData.prenom} 
                     onChange={handleChange}
+                    sx={{
+                        width: {
+                            xs: '100%',
+                            sm: '45%'
+                        }
+                    }}
                 />
                 <CustomTextField 
                     label="Ville" 
@@ -92,6 +129,12 @@ const ContactForm = () => {
                     name="ville" 
                     value={formData.ville} 
                     onChange={handleChange}
+                    sx={{
+                        width: {
+                            xs: '100%',
+                            sm: '45%'
+                        }
+                    }}
                 />
                 <CustomTextField 
                     label="Téléphone" 
@@ -99,6 +142,12 @@ const ContactForm = () => {
                     name="telephone" 
                     value={formData.telephone} 
                     onChange={handleChange}
+                    sx={{
+                        width: {
+                            xs: '100%',
+                            sm: '45%'
+                        }
+                    }}
                 />
                 <CustomTextField 
                     label="Email" 
@@ -106,6 +155,12 @@ const ContactForm = () => {
                     name="email" 
                     value={formData.email} 
                     onChange={handleChange}
+                    sx={{
+                        width: {
+                            xs: '100%',
+                            sm: '45%'
+                        }
+                    }}
                 />                
             </Stack>
             <Stack marginBottom='15px' >
@@ -129,10 +184,10 @@ const ContactForm = () => {
                         value={formData.serviceChoisi}
                         onChange={handleChange}
                     >
-                        <FormControlLabel value="non défini" control={<CustomRadio />} label="Non défini" />
-                        <FormControlLabel value="clés en main" control={<CustomRadio />} label="Service Clés en main (25%)" />
-                        <FormControlLabel value="clés confort" control={<CustomRadio />} label="Service Clés confort (20%)" />
-                        <FormControlLabel value="clés essentielles" control={<CustomRadio />} label="Service Clés essentielles (15%)" />
+                        <FormControlLabel value="non défini" control={<CustomRadio />} label="Non défini" sx={{ width: 'fit-content' }} />
+                        <FormControlLabel value="clés en main" control={<CustomRadio />} label="Service Clés en main (25%)" sx={{ width: 'fit-content' }} />
+                        <FormControlLabel value="clés confort" control={<CustomRadio />} label="Service Clés confort (20%)" sx={{ width: 'fit-content' }} />
+                        <FormControlLabel value="clés essentielles" control={<CustomRadio />} label="Service Clés essentielles (15%)" sx={{ width: 'fit-content' }} />
                     </RadioGroup>
                 </FormControl>
             </Stack>

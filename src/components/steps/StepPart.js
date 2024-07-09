@@ -27,7 +27,8 @@ const StepPart = ({ step, isArrowVisible }) => {
                     </Typography>
                 </Stack>
                 <Box
-                    height='150px'
+                    flexGrow='1'
+                    minHeight='200px'
                     width='7px'
                     bgcolor='#EAC985'
                     boxShadow='-3.5px 0 0 #6C462A' 
@@ -63,13 +64,34 @@ const StepPart = ({ step, isArrowVisible }) => {
                     null
                 }
             </Stack>
-            <Stack>
+            <Stack spacing={5} padding='8px 0 50px 0'>
+                <Typography
+                    component='p'
+                    fontFamily='Dosis, sans-serif'
+                    fontSize='1.4em'
+                    fontWeight='700'
+                    sx={{
+                        width: {
+                            xs: 'auto',
+                            md: '50vw',
+                            lg: '30vw'
+                        },
+                        color: '#504131'
+                    }}
+                >
+                    {step.title}
+                </Typography>
                 <Typography
                     component='p'
                     fontFamily='Dosis, sans-serif'
                     fontSize='1.4em'
                     fontWeight='500'
                     sx={{
+                        width: {
+                            xs: 'auto',
+                            md: '50vw',
+                            lg: '30vw'
+                        },
                         color: '#6C462A'
                     }}
                 >

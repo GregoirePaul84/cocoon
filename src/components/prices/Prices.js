@@ -17,11 +17,21 @@ const Prices = () => {
             >
                 <Stack
                     id='tarifs'
+                    direction={{
+                        xs: 'column',
+                        md: 'row'
+                    }}
                     rowGap='40px'
+                    columnGap='25px'
+                    justifyContent='space-evenly'
                     alignItems='center'
                     marginTop='-230px'
                     sx={{
-                        scrollMarginTop: '70px'
+                        scrollMarginTop: '70px',
+                        alignItems: {
+                            xs: 'center',
+                            md: 'flex-start'
+                        }
                     }}
                 >
                     {

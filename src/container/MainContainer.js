@@ -1,5 +1,4 @@
 import React from 'react';
-import { Box } from '@mui/material';
 
 // Import des composants internes
 import Header from '../components/utils/Header.js';
@@ -15,11 +14,13 @@ import Contact from '../components/contact/Contact.js';
 import Footer from '../components/utils/Footer.js';
 import ScrollToTopBtn from '../components/utils/ScrollToTopBtn.js';
 import Carousel from '../components/home/Carousel.js';
+import SmoothScroll from '../components/utils/SmoothScroll.js';
 
 const MainContainer = () => {
+
     return (
-        <Box>
-            <ScrollToTopBtn />
+        <SmoothScroll >
+            {/* <ScrollToTopBtn /> */}
             <Header />
             <Carousel />
             <Benefits />
@@ -32,7 +33,7 @@ const MainContainer = () => {
             <Faq />
             <Contact />
             <Footer />
-        </Box>
+        </SmoothScroll>
     );
 };
 

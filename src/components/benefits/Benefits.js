@@ -29,15 +29,25 @@ const benefitsText = [
 const Benefits = () => {
     return (
         <Container
+            maxWidth={false}
             sx={{
                 width: '100vw',
                 padding: '60px 7% 40px 7%',
+                marginTop: {
+                    md: '55px'
+                }
             }}
         >
             <Stack 
                 justifyContent='space-evenly'
                 alignItems='center'    
                 rowGap='57.5px'
+                sx={{
+                    flexDirection: {
+                        xs: 'column',
+                        md: 'row'
+                    },
+                }}
             >
                 {
                     benefitsText.map((obj) => {

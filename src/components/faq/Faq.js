@@ -1,41 +1,65 @@
 import { Stack, Accordion, AccordionDetails, AccordionSummary, Box, Container, Divider, Typography } from '@mui/material';
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { useScroll } from '../utils/ScrollContext';
 
 const questionsList = [
     {
         id: 0,
-        question: 'Quels types de services proposez-vous pour la gestion de résidences secondaires ?',
-        answer: 'Nous offrons une gamme complète de services pour maximiser votre tranquillité d\'esprit et la rentabilité de votre bien. Cela inclut la prise de photos professionnelles, la mise en ligne des annonces, la communication avec les clients, l\'accueil et la remise des clés, la mise à disposition de produits locaux, le ménage, et la gestion des urgences 24/7.'
+        question: 'Qu\'est ce que la conciergerie Cocoon ?',
+        answer: 'La Conciergerie Cocoon est une entreprise spécialisée dans la gestion locative saisonnière, dédiée à transformer votre propriété en une expérience parfaite pour les voyageurs tout en maximisant votre rentabilité. Notre mission est de fournir une gestion de location clé en main qui enlève le fardeau de la gestion quotidienne aux propriétaires immobiliers.'
     },
     {
         id: 1,
-        question: 'Comment déterminez-vous le prix de location de mon logement ?',
-        answer: 'Le prix est établi en fonction de plusieurs facteurs, tels que l\'emplacement, la taille, les équipements du logement et les tarifs du marché local. Nous utilisons des données de marché actuelles pour optimiser les tarifs et maximiser vos revenus, tout en restant compétitifs.'
+        question: 'À qui s\'adresse les services de la conciergerie Cocoon ?',
+        answer: 'Nos services sont destinés aux propriétaires de biens meublés et bien entretenus qui souhaitent offrir une expérience de qualité à leurs hôtes. Nous collaborons avec des clients qui partagent notre engagement envers l\'excellence dans l\'accueil et le confort des voyageurs. Si vous possédez un logement en bon état, décoré avec soin et prêt à accueillir des hôtes, c\'est avec plaisir que nous travaillerons avec vous !'
     },
     {
         id: 2,
-        question: 'Puis-je choisir les locataires ?',
-        answer: 'Oui, vous pouvez définir des critères de sélection des locataires. Nous nous chargeons du processus de vérification et vous proposons les candidats qui correspondent à vos critères pour une approbation finale.'
+        question: 'Comment déterminez-vous le prix de location de mon logement ?',
+        answer: 'Le prix est établi en fonction de plusieurs facteurs, tels que la saisonnalité, l\'emplacement, la taille, les équipements du logement et les tarifs du marché local. Nous utilisons des données de marché actuelles pour optimiser les tarifs et maximiser vos revenus, tout en restant compétitifs.'
     },
     {
         id: 3,
-        question: 'Que se passe-t-il en cas de dommages ou de problèmes pendant la location ?',
-        answer: 'En cas de dommage, nous contactons immédiatement le locataire pour une résolution rapide et utilisons la caution pour couvrir les coûts de réparation. Nous vous tenons informé à chaque étape et gérons toutes les réparations nécessaires de manière efficace.'
+        question: 'Puis-je choisir les locataires ?',
+        answer: 'Oui, vous pouvez définir des critères de sélection des locataires. Nous nous chargeons du processus de vérification selon vos critères (animaux acceptés ou non, maximum de voyageurs autorisés... ) et sélectionnons les voyageurs selon vos conditions.'
     },
     {
         id: 4,
-        question: 'Quelle est la durée d\'engagement avec votre service ?',
-        answer: 'Nous proposons différentes formules d\'engagement, allant de contrats flexibles sans engagement à long terme à des accords annuels, selon vos préférences.'
+        question: 'Que se passe-t-il en cas de dommages ou de problèmes pendant la location ?',
+        answer: 'En cas de dommages ou de problèmes pendant la location, nous intervenons rapidement pour résoudre la situation. Nous travaillons en étroite collaboration avec les plateformes de réservations, qui offrent des assurances couvrant les dommages et les vols, afin de garantir que tout soit géré efficacement et sans tracas pour le propriétaire.'
     },
     {
         id: 5,
-        question: 'Comment puis-je commencer à travailler avec vous ?',
-        answer: 'Contactez-nous via notre site web ou par téléphone pour planifier une consultation gratuite. Nous discuterons de vos besoins, examinerons votre propriété et vous proposerons un plan personnalisé adapté à vos objectifs.'
-    },
+        question: 'Est-ce-que je pourrai encore occuper mon logement si je le loue sur Airbnb ou Booking ?',
+        answer: 'Bien sûr ! Vous êtes maîtres du calendrier des réservations. Vous pouvez nous communiquer les dates où vous souhaitez occuper votre logement. Le logement étant contrôlé à chaque sortie de voyageurs, vous avez la garantie de trouver votre logement dans un état de propreté irréprochable.'
+    }
 ]
 
 const Faq = () => {
+
+    const timeoutRef = useRef(null);
+
+    const { locomotiveScroll } = useScroll();
+
+    const updateLocomotiveScroll = () => {
+        if (locomotiveScroll) {
+            setTimeout(() => {
+                locomotiveScroll.update();
+              }, 300); 
+        }
+    }
+
+    useEffect(() => {
+        const currentTimeout = timeoutRef.current;
+    
+        return () => {
+            if (currentTimeout) {
+                clearTimeout(currentTimeout);
+            }
+        };
+    }, []);
+
     return (
         <Box
             bgcolor='#CBA67E'
@@ -70,6 +94,7 @@ const Faq = () => {
                                                 backgroundColor: 'transparent'
                                               }
                                         }}
+                                        onClick={() => updateLocomotiveScroll()}
                                     >
                                         <AccordionSummary
                                             expandIcon={<ExpandMoreIcon />}

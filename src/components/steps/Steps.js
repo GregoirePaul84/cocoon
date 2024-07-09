@@ -1,23 +1,28 @@
-import { Box, Container, Stack, Typography } from '@mui/material';
+import { Container, Stack, Typography } from '@mui/material';
 import React from 'react';
 import { stepsContent } from '../../content/steps/stepsContent';
 import StepPart from './StepPart';
+import { useScroll } from '../utils/ScrollContext';
 
 const Steps = () => {
+
+    const { scrollTo } = useScroll(); 
+    const content = stepsContent(scrollTo);
+
     return (
         <Container
             sx={{
                 width: '100vw',
-                padding: '40px 7%',
+                padding: '60px 7% 40px 7%',
             }}
         >
-            <Stack spacing={4}>
+            <Stack spacing={8}>
                 <Stack spacing={1}>
                     <Typography
                         align='center'
                         component='p'
                         fontFamily='Dosis, sans-serif'
-                        fontSize='1.4em'
+                        fontSize='2.3em'
                         fontWeight='400'
                         sx={{
                             color: '#6C462A'
@@ -29,7 +34,7 @@ const Steps = () => {
                         align='center'
                         component='p'
                         fontFamily='Dosis, sans-serif'
-                        fontSize='1.4em'
+                        fontSize='2em'
                         fontWeight='600'
                         sx={{
                             color: '#6C462A'
@@ -38,11 +43,18 @@ const Steps = () => {
                         Comment faire ?
                     </Typography>
                 </Stack>
-                <Stack>
+                <Stack
+                    sx={{
+                        alignItems: {
+                            xs: 'flex-start',
+                            md: 'center'
+                        }
+                    }}
+                >
                     {
-                        stepsContent.map((step, index) => {
+                        content.map((step, index) => {
                             return(
-                                <StepPart key={step.id} step={step} isArrowVisible={stepsContent.length - 1 === index} />
+                                <StepPart key={step.id} step={step} isArrowVisible={content.length - 1 === index} />
                             )
                         })
                     }
