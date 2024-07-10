@@ -1,0 +1,32 @@
+{
+  "files": {
+    "main.css": "/cocoon/static/css/main.e856561d.css",
+    "main.js": "/cocoon/static/js/main.3e3a327a.js",
+    "static/media/DSC_8437.JPG": "/cocoon/static/media/DSC_8437.30313942583e5630b6f2.JPG",
+    "static/media/DSC_8437_inverted.JPG": "/cocoon/static/media/DSC_8437_inverted.aa947c40fe4f75583516.JPG",
+    "static/media/pexels-jonathanborba-5563472.jpg": "/cocoon/static/media/pexels-jonathanborba-5563472.6b4843cbac15467aefc9.jpg",
+    "static/media/pexels-rachel-claire-4577191.jpg": "/cocoon/static/media/pexels-rachel-claire-4577191.de05297aba983589565b.jpg",
+    "static/media/house-8274529_1280.jpg": "/cocoon/static/media/house-8274529_1280.da901653cee287ae8ab7.jpg",
+    "static/media/swimming_pool.webp": "/cocoon/static/media/swimming_pool.a3cf939ef756d5be1afe.webp",
+    "static/media/cleaning.webp": "/cocoon/static/media/cleaning.db7fa4ffecc92a042de4.webp",
+    "static/media/keys.webp": "/cocoon/static/media/keys.9ce662480f3df3a26a9a.webp",
+    "static/media/camera.webp": "/cocoon/static/media/camera.e84ae1dc138879c78fe7.webp",
+    "static/media/bronze_key.webp": "/cocoon/static/media/bronze_key.589e5007fc43a836398e.webp",
+    "static/media/laptop.webp": "/cocoon/static/media/laptop.8172b572b43595829f11.webp",
+    "static/media/gold_key.webp": "/cocoon/static/media/gold_key.3ebe8c28209d52965819.webp",
+    "static/media/silver_key.webp": "/cocoon/static/media/silver_key.8f961732e517b23a4eb4.webp",
+    "static/media/assistance.webp": "/cocoon/static/media/assistance.c2ce06171610e05cccf0.webp",
+    "static/media/logo_2.svg": "/cocoon/static/media/logo_2.96f3820848689c63a94f33b0c1e857eb.svg",
+    "static/media/slick.svg": "/cocoon/static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/slick.eot": "/cocoon/static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/slick.ttf": "/cocoon/static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "index.html": "/cocoon/index.html",
+    "static/media/slick.woff": "/cocoon/static/media/slick.295183786cd8a1389865.woff",
+    "main.e856561d.css.map": "/cocoon/static/css/main.e856561d.css.map",
+    "main.3e3a327a.js.map": "/cocoon/static/js/main.3e3a327a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e856561d.css",
+    "static/js/main.3e3a327a.js"
+  ]
+}
