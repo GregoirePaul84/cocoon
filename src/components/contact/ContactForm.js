@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Stack, TextField, FormControlLabel, Button, TextareaAutosize, Typography, FormControl, RadioGroup, Radio, styled } from '@mui/material';
+import { Stack, TextField, FormControlLabel, Button, Typography, FormControl, RadioGroup, Radio, styled } from '@mui/material';
+import { useForm, ValidationError } from '@formspree/react';
 
 const CustomTextField = styled(TextField)({
     '& .MuiOutlinedInput-root': {
@@ -32,6 +33,9 @@ const CustomTextarea = styled('textarea')({
   });
 
 const ContactForm = () => {
+
+    const [state, submit] = useForm("xovavaoj");
+
     const [formData, setFormData] = useState({
         nom: '',
         prenom: '',
@@ -41,6 +45,44 @@ const ContactForm = () => {
         serviceChoisi: 'non défini',
         message: ''
     });
+    const [errors, setErrors] = useState({});
+
+    const validateForm = () => {
+        let newErrors = {};
+        // Vérifiez chaque champ requis et ajoutez une erreur si nécessaire
+        if (!formData.nom.trim()) {
+            newErrors.nom = "Le nom est requis.";
+        }
+        if (!formData.prenom.trim()) {
+            newErrors.prenom = "Le prénom est requis.";
+        }
+        if (!formData.email.trim()) {
+            newErrors.email = "L'email est requis.";
+        } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+            newErrors.email = "L'email n'est pas valide.";
+        }
+        if (!formData.telephone.trim()) {
+            newErrors.telephone = "Le numéro de téléphone est requis.";
+        }
+        // Ajoutez plus de validations selon vos besoins
+    
+        setErrors(newErrors);
+        // Renvoyer true si aucune erreur n'est trouvée
+        return Object.keys(newErrors).length === 0;
+    };
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        if (validateForm()) {
+            console.log('Submitted Form Data:', formData);
+            submit();
+            // Si valide, soumettre le formulaire ou faire ce que vous avez besoin de faire
+        } else {
+            console.log('Validation Failed');
+            // Gérer l'affichage des messages d'erreur ici ou dans votre formulaire
+        }
+    };
+    
 
     const handleChange = (event) => {
         const { name, value, type, checked } = event.target;
@@ -50,11 +92,10 @@ const ContactForm = () => {
         });
     };
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        console.log('Submitted Form Data:', formData);
-        // Vous pourriez ici ajouter une logique pour envoyer les données à un serveur, etc.
-    };
+
+    if (state.succeeded) {
+        return <p>Thanks for joining!</p>;
+    }
 
     return (
         <form onSubmit={handleSubmit}>
@@ -72,15 +113,12 @@ const ContactForm = () => {
                 </Typography>
             </Stack>
             <Stack 
-                spacing={{
-                    xs: 4,
-                    sm: 0
-                }} 
                 direction={{
                     xs: 'column',
                     sm: 'row'
                 }}
                 marginBottom='40px' 
+                position='relative'
                 sx={{
                     flexWrap: {
                         xs: 'nowrap',
@@ -103,10 +141,16 @@ const ContactForm = () => {
                     name="nom" 
                     value={formData.nom} 
                     onChange={handleChange}
+                    error={!!errors.nom}
+                    helperText={errors.nom}
                     sx={{
                         width: {
                             xs: '100%',
                             sm: '45%'
+                        },
+                        '& .MuiFormHelperText-root': {
+                            position: 'absolute',
+                            bottom: '-22px'
                         }
                     }}
                 />

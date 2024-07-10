@@ -12,7 +12,6 @@ import Location from '../components/location/Location.js';
 import Faq from '../components/faq/Faq.js';
 import Contact from '../components/contact/Contact.js';
 import Footer from '../components/utils/Footer.js';
-import ScrollToTopBtn from '../components/utils/ScrollToTopBtn.js';
 import Carousel from '../components/home/Carousel.js';
 import SmoothScroll from '../components/utils/SmoothScroll.js';
 
@@ -20,7 +19,6 @@ const MainContainer = () => {
 
     return (
         <SmoothScroll >
-            {/* <ScrollToTopBtn /> */}
             <Header />
             <Carousel />
             <Benefits />

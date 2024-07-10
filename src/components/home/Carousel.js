@@ -1,5 +1,5 @@
 // Import des libs externes
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Stack } from '@mui/material';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css"; 
@@ -18,17 +18,31 @@ import img3 from '../../medias/images/pexels-jonathanborba-5563472.jpg';
 
 const Carousel = () => {
 
-  const [currentSlide, setCurrentSlide] = React.useState(0);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [imagesLoaded, setImagesLoaded] = useState(false);
+
+    useEffect(() => {
+        const images = [img1, img2, img3];
+        Promise.all(images.map(image => {
+            return new Promise((resolve) => {
+                const img = new Image();
+                img.src = image;
+                img.onload = resolve;
+            });
+        })).then(() => setImagesLoaded(true));
+    }, []);
 
   const settings = {
     dots: true,  // Affiche les points de navigation en bas du carousel
     infinite: true,  // Permet au carousel de boucler infiniment
-    speed: 500,  // Vitesse de transition entre les diapositives
+    speed: 1000,  // Vitesse de transition entre les diapositives
     slidesToShow: 1,  // Nombre de diapositives à montrer à la fois
     slidesToScroll: 1,  // Nombre de diapositives à défiler
     swipeToSlide: true,  // Permet de swiper directement à une diapositive spécifique
     touchThreshold: 10,  // Sensibilité du swipe, valeur plus basse = plus sensible
     arrows: false,
+    autoplay: imagesLoaded, // Active le défilement automatique une fois les images chargées
+    autoplaySpeed: 6500,  
     afterChange: (current) => setCurrentSlide(current),
     appendDots: dots => (
         <div style={{ position: "absolute", bottom: "10px", width: "100%" }}>

@@ -14,17 +14,21 @@ const About = () => {
             sx={{
                 backgroundColor: {
                     xs: 'inherit',
-                    lg: '#504131'
+                    md: '#504131'
                 }
             }}
         >
             <Box
-                width='35vw'
                 minHeight='100vh'
                 sx={{
                     display: {
                         xs: 'none',
+                        md: 'flex',
                         lg: 'flex'
+                    },
+                    width: {
+                        md: '20vw',
+                        lg: '35vw'
                     },
                     bgcolor: '#504131'
                 }}
@@ -35,11 +39,12 @@ const About = () => {
                 sx={{
                     width: {
                         xs: '100vw',
+                        md: '80vw',
                         lg: '65vw',
                     },
                     backgroundImage: {
-                        xs: `linear-gradient(rgba(40, 24, 12, 0.47), rgba(40, 24, 12, 0.47)), url(${gregoireImg})`,
-                        lg: `
+                        xs: `linear-gradient(180deg, rgba(40,24,12,0.47) 0%, rgba(40,24,12,0.8) 100%), url(${gregoireImg})`,
+                        md: `
                             linear-gradient(to right, rgba(80, 65, 49, 1) 0%, rgba(80, 65, 49, 0) 70%),
                             linear-gradient(rgba(40, 24, 12, 0.47), rgba(40, 24, 12, 0.47)), 
                             url(${gregoireDesktopImg})
@@ -49,7 +54,7 @@ const About = () => {
                     backgroundRepeat: 'no-repeat',  
                     backgroundPosition: {
                         xs: 'top left',
-                        lg: 'top left'
+                        md: 'top left'
                     },  
                     scrollMarginTop: '70px'
                 }}
@@ -60,23 +65,37 @@ const About = () => {
                     sx={{
                         height: '100%',
                         width: '100%',
-                        padding: '40px 7%',
+                        padding: {
+                            xs: '40px 7%',
+                            md: '60px 7%'
+                        },
                     }}
                 >
                     <Stack
                         sx={{
                             maxWidth: {
                                 xs: 'none',
-                                lg: '50%',
+                                md: '50%',
                             },
                             position: {
                                 xs: 'static',
-                                lg: 'relative'
+                                md: 'relative'
                             },
-                            right: '50%'
+                            right: {
+                                md: '20%',
+                                lg: '50%'
+                            }
                         }}
                     >
-                        <Stack spacing={2} marginBottom='115px'>
+                        <Stack 
+                            spacing={2} 
+                            sx={{
+                                marginBottom: {
+                                    xs: '115px',
+                                    md: '40px'
+                                }
+                            }}
+                        >
                             <Typography
                                 align='center'
                                 component='h2'
@@ -120,7 +139,6 @@ const About = () => {
                             </Typography>
                             <Stack spacing={3} >
                                 <Typography
-                                    // align='center'
                                     fontFamily='Dosis, sans-serif'
                                     fontSize='1.2em'
                                     fontWeight='300'

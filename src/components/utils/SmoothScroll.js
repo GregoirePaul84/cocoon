@@ -7,6 +7,8 @@ import ScrollToTopBtn from './ScrollToTopBtn';
 const SmoothScroll = ({ children }) => {
     const scrollContainerRef = useRef(null);
     const locomotiveScrollRef = useRef(null);
+    const timeoutRef = useRef(null);
+
     const [locomotiveScroll, setLocomotiveScroll] = useState(null);
 
     // Définir la fonction de défilement vers un élément
@@ -23,6 +25,7 @@ const SmoothScroll = ({ children }) => {
         }
     };
 
+    // Initialisation de locomotive scroll
     useEffect(() => {
         if (scrollContainerRef.current) {
             locomotiveScrollRef.current = new LocomotiveScroll({
@@ -37,31 +40,43 @@ const SmoothScroll = ({ children }) => {
             });
 
             setLocomotiveScroll(locomotiveScrollRef.current);
+        }
+    }, []);
 
-            const handleUpdate = () => {
+    // Mise à jour de locomotive scroll : premier rendu et resize
+    useEffect(() => {
+        const handleUpdate = () => {
+            if (timeoutRef.current) {
+                clearTimeout(timeoutRef.current);
+            }
+
+            timeoutRef.current = setTimeout(() => {
                 if (locomotiveScrollRef.current) {
                     locomotiveScrollRef.current.update();
                 }
-            };
-    
-            window.addEventListener('load', handleUpdate);
-            window.addEventListener('resize', handleUpdate);
-    
-            return () => {
-                window.removeEventListener('load', handleUpdate);
-                window.removeEventListener('resize', handleUpdate);
+            }, 100);
+        };
 
-                if (locomotiveScrollRef.current) {
-                    locomotiveScrollRef.current.destroy();
-                }
-            };
-        }
+    
+        window.addEventListener('load', handleUpdate);
+        window.addEventListener('resize', handleUpdate);
+    
+        return () => {
+            clearTimeout(timeoutRef.current);
+
+            window.removeEventListener('load', handleUpdate);
+            window.removeEventListener('resize', handleUpdate);
+
+            if (locomotiveScrollRef.current) {
+                locomotiveScrollRef.current.destroy();
+            }
+        };
     }, []);
     
     return (
         <ScrollContext.Provider value={{ scrollTo: handleScrollToElement, locomotiveScroll: locomotiveScroll }}>
             <ScrollToTopBtn />
-            <div data-scroll-container ref={scrollContainerRef}>
+            <div data-scroll-container ref={scrollContainerRef} style={{ minHeight: '100vh' }}>
                 {children}
             </div>
         </ScrollContext.Provider>
