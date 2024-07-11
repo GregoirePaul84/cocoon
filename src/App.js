@@ -4,25 +4,17 @@ import { CssBaseline } from '@mui/material';
 
 // Import des composants
 import MainContainer from './container/MainContainer';
-
-import useMediaQuery from '@mui/material/useMediaQuery';
-import { useTheme } from '@mui/material/styles';
+import Success from './components/success/Success';
 
 export function App() {
 
-  const theme = useTheme();
-  const lg = useMediaQuery(theme.breakpoints.up('lg'));
-  const xl = useMediaQuery(theme.breakpoints.up('xl'));
-
   return (
     <>
-    {/* <div>
-      {xl ? "XL Screen" : lg ? "Large Screen" : "Small Screen"}
-    </div> */}
       <CssBaseline />
-      <BrowserRouter>
+      <BrowserRouter basename="/cocoon">
         <Routes>
           <Route path="/" element={<MainContainer />} />
+          <Route path="/success" element={<Success />} />
         </Routes>
       </BrowserRouter>
     </>
