@@ -1,7 +1,7 @@
 
 import { useState, useEffect, useMemo } from 'react';
 
-const useTypewriterEffect = (words, speed, currentSlide, index) => {
+const useTypewriterEffect = (words, speed, currentSlide, index, isAnimationEnded) => {
     const [text, setText] = useState('');
     const [isTypingDone, setIsTypingDone] = useState(false);
     const [cursorVisible, setCursorVisible] = useState(true);
@@ -11,7 +11,7 @@ const useTypewriterEffect = (words, speed, currentSlide, index) => {
 
     useEffect(() => {
         let timer;
-        if (index === currentSlide) {
+        if (index === currentSlide && isAnimationEnded) {
             if (text.length < fullText.length) {
                 timer = setTimeout(() => {
                     setText((prev) => prev + fullText.charAt(text.length));
@@ -25,7 +25,7 @@ const useTypewriterEffect = (words, speed, currentSlide, index) => {
             setIsTypingDone(false);
         }
         return () => clearTimeout(timer);
-    }, [text, currentSlide, index, fullText, speed]); // fullText is now stable unless words change
+    }, [text, currentSlide, index, fullText, speed, isAnimationEnded]); // fullText is now stable unless words change
 
     useEffect(() => {
         let cursorTimer;

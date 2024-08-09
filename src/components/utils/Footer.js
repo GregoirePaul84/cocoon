@@ -8,7 +8,8 @@ import PlaceIcon from '@mui/icons-material/Place';
 const Footer = () => {
     return (
         <Box
-            bgcolor='#987349'
+            bgcolor='rgb(64 51 38)'
+            paddingBottom='20px'
         >
             <Stack spacing={3} padding='20px 7% 60px 7%'>
                 <img 
@@ -25,7 +26,7 @@ const Footer = () => {
                         fontFamily='"Dosis", sans-serif'
                         sx={{ color: '#fff' }}
                     >
-                        07.81.37.30.10
+                        04.48.15.08.72
                     </Typography>
                 </Stack>
                 <Stack direction='row' spacing={1} >
@@ -48,6 +49,47 @@ const Footer = () => {
                         13 rue des Combes, 30430 ROCHEGUDE
                     </Typography>
                 </Stack>
+            </Stack>
+            <Stack 
+                direction='row'
+                width='100vw'
+                justifyContent='center'
+                columnGap='40px'
+            >
+                <Typography
+                    component='p'
+                    fontFamily='"Dosis", sans-serif'
+                    sx={{ color: '#eac985' }}
+                >
+                    SIRET 92794922200016
+                </Typography>
+                <Typography
+                    component='a'
+                    fontFamily='"Dosis", sans-serif'
+                    href="Mentions_legales.pdf"
+                    download="Mentions_legales.pdf"
+                    sx={{ 
+                        color: '#eac985',
+                        textDecoration: 'none'
+                    }}
+
+                >
+                    Mentions légales 
+                </Typography>
+                <Typography
+                    component='p'
+                    fontFamily='"Dosis", sans-serif'
+                    sx={{ color: '#eac985' }}
+                >
+                    | 
+                </Typography>
+                <Typography
+                    component='p'
+                    fontFamily='"Dosis", sans-serif'
+                    sx={{ color: '#eac985' }}
+                >
+                    CGV
+                </Typography>
             </Stack>
         </Box>
     );

@@ -15,14 +15,25 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300..700;1,300..700&family=Dosis:wght@200..800&family=League+Spartan:wght@700&display=swap" rel="stylesheet">
     <title>Conciergerie Cocoon</title>
     <style>
+      body {
+        overflow-y: overlay;
+      }
       .custom-slider {
         cursor: grab;
       }
       .custom-slider:active {
         cursor: grabbing;
       }
-      .slick-dots li.slick-active button:before {
-          color: #EAC985 !important;
+      .slick-slider .slick-dots li {
+          height: 50px;
+          width: 50px;
+          filter: grayscale(1);
+      }
+      .slick-dots li.slick-active {
+        filter: grayscale(0);
+        transform: scale(1.2);
+        transition: transform 300ms;
+        outline: 2px solid #eac985;
       }
   </style>
   </head>

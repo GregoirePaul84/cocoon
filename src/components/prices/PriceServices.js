@@ -1,4 +1,4 @@
-import { List, ListItemIcon, ListItemText, Stack, Typography } from '@mui/material';
+import { List, ListItemIcon, Stack, Typography } from '@mui/material';
 import React from 'react';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 

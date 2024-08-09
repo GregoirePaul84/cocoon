@@ -34,7 +34,7 @@ const PriceCard = ({ bgGradient, bgImg, bgColor, title, subtitle, price, service
 
     return (
         <Card
-            elevation={4}
+            elevation={6}
             sx={{
                 height: 'auto',
                 width: '100%',

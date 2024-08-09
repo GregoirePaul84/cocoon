@@ -19,7 +19,7 @@ const Contact = () => {
                     fontFamily='"Dosis", sans-serif'
                     fontSize='1.6em'
                     fontWeight='500'
-                    color='#5a371d'
+                    color='#504131'
                 >
                     Vous avez <span style={{ fontWeight: '700' }} >d'autres questions</span> ou <span style={{ fontWeight: '700' }}>souhaitez nous contacter ?</span>
                 </Typography>
@@ -29,7 +29,7 @@ const Contact = () => {
                     fontFamily='"Dosis", sans-serif'
                     fontSize='1.4em'
                     fontWeight='500'
-                    color='#5a371d'
+                    color='#6C462A'
                 >
                     Contactez-nous au <strong>04.48.15.08.72</strong> ou remplissez le formulaire ci-dessous !
                 </Typography>

@@ -3,9 +3,9 @@ import React from 'react';
 import useTypewriterEffect from '../../hooks/useTypewriterEffect';
 import { useScroll } from '../utils/ScrollContext';
 
-const Banner = ({ index, topTitle, bottomTitle, description, currentSlide }) => {
+const Banner = ({ index, isAnimationEnded, topTitle, bottomTitle, description, currentSlide }) => {
 
-    const [text, cursorVisible] = useTypewriterEffect([topTitle, bottomTitle], 75, currentSlide, index);
+    const [text, cursorVisible] = useTypewriterEffect([topTitle, bottomTitle], 75, currentSlide, index, isAnimationEnded);
 
     const { scrollTo } = useScroll();
 
@@ -55,7 +55,7 @@ const Banner = ({ index, topTitle, bottomTitle, description, currentSlide }) => 
                                 fontSize: {
                                     xs: '3em',
                                     sm: '4em',
-                                    md: '4.5em',
+                                    md: '4em',
                                     lg: '4em',
                                     xl: '5em'
                                 },
@@ -71,7 +71,7 @@ const Banner = ({ index, topTitle, bottomTitle, description, currentSlide }) => 
                             width: '9vw',
                             minWidth: '90px',
                             borderColor: '#EAC985',
-                            borderBottomWidth: '2px',
+                            borderBottomWidth: '3px',
                             alignSelf: 'center'
                         }}
                     />
@@ -81,8 +81,9 @@ const Banner = ({ index, topTitle, bottomTitle, description, currentSlide }) => 
                             component='p'
                             color='#fff'
                             fontFamily='Dosis, sans-serif'
-                            fontWeight='100'
+                            fontWeight='200'
                             sx={{
+                                WebkitTextStroke: '0.15px black',
                                 maxWidth: {
                                     xs: 'auto',
                                     sm: '65vw',
@@ -94,7 +95,7 @@ const Banner = ({ index, topTitle, bottomTitle, description, currentSlide }) => 
                                     xs: '1em',
                                     sm: '1.4em',
                                     md: '1.5em',
-                                    lg: '1.6em',
+                                    lg: '1.5em',
                                     xl: '1.7em'
                                 },
                                 lineHeight: {

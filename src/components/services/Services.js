@@ -1,86 +1,68 @@
-import { Container, Box, Stack, Grid } from '@mui/material';
+import { Container, Box, Stack } from '@mui/material';
 import React from 'react';
-import ServiceCard from './ServiceCard';
 import cameraImg from '../../medias/images/camera.webp';
 import laptopImg from '../../medias/images/laptop.webp';
 import keysImg from '../../medias/images/keys.webp';
+import productsImg from '../../medias/images/products.webp';
 import assistanceImg from '../../medias/images/assistance.webp';
 import cleaningImg from '../../medias/images/cleaning.webp';
-import swimmingPoolImg from '../../medias/images/swimming_pool.webp';
+import ServiceCard2 from './ServiceCard2';
 
 const servicesContent = [
     {
         id: 0,
-        bgcolor: '#504131',
-        borderColor: '#8F6648',
-        dividerColor: '#E6C9A8',
-        titleColor: '#FFFBF1',
-        textColor: '#FFE9BE',
+        bgcolor: '#bfa484',
+        direction: 'row',
         img: cameraImg,
         title: 'Mise en valeur de votre bien',
         description: <>Nous sublimons votre propriété avec des <strong>photographies professionnelles</strong> et des <strong>annonces rédigées avec soin</strong> pour maximiser son attrait sur les plateformes de réservation.</>
     },
     {
         id: 1,
-        bgcolor: '#E7CAA9',
-        borderColor: '#504131',
-        dividerColor: '#8F6648',
-        titleColor: '#504131',
-        textColor: '#504131',
+        bgcolor: '#c4b4a1',
+        direction: 'row-reverse',
         img: laptopImg,
         title: 'Gestion des réservations',
         description: <>Nous <strong>gérons vos annonces</strong> sur des plateformes telles que Booking et Airbnb, en assurant une <strong>réponse rapide et efficace</strong> aux requêtes des voyageurs.</>
     },
     {
         id: 2,
-        bgcolor: '#504131',
-        borderColor: '#8F6648',
-        dividerColor: '#E6C9A8',
-        titleColor: '#FFFBF1',
-        textColor: '#FFE9BE',
+        bgcolor: '#e4d9cd',
+        direction: 'row',
         img: keysImg,
         title: 'Entrée / Sortie des voyageurs',
         description: <>Nous <strong>accueillons chaleureusement les voyageurs</strong>, gérons la remise et la récupération des clés, et assurons un <strong>état des lieux méticuleux</strong> à chaque rotation.</>
     },
     {
         id: 3,
-        bgcolor: '#E7CAA9',
-        borderColor: '#504131',
-        dividerColor: '#8F6648',
-        titleColor: '#504131',
-        textColor: '#504131',
+        bgcolor: '#bfa484',
+        direction: 'row-reverse',
+        img: productsImg,
+        title: 'Accueil personnalisé',
+        description: <>Nous mettons à disposition un <strong>livret d'accueil</strong> afin de guider les voyageurs lors de leur séjour. Nous offrons également une sélection de <strong>produits de bienvenue</strong>, comme du vin et des spécialités locales.</>
+    },
+    {
+        id: 4,
+        bgcolor: '#c4b4a1',
+        direction: 'row',
         img: assistanceImg,
         title: 'Assistance aux voyageurs',
         description: <>Disponibles <strong>24h/24 et 7j/7</strong>, nous offrons une <strong>assistance continue aux voyageurs</strong>, prêts à résoudre tout problème qui pourrait survenir durant leur séjour.</>
     },
     {
-        id: 4,
-        bgcolor: '#504131',
-        borderColor: '#8F6648',
-        dividerColor: '#E6C9A8',
-        titleColor: '#FFFBF1',
-        textColor: '#FFE9BE',
+        id: 5,
+        bgcolor: '#e4d9cd',
+        direction: 'row-reverse',
         img: cleaningImg,
         title: 'Ménage et entretien',
         description: <>Nous effectuons un <strong>ménage de niveau hôtelier</strong>, nous occupons de la blanchisserie et de la maintenance courante, tout en fournissant les consommables (papier toilette, thé, café...)</>
-    },
-    {
-        id: 5,
-        bgcolor: '#E7CAA9',
-        borderColor: '#504131',
-        dividerColor: '#8F6648',
-        titleColor: '#504131',
-        textColor: '#504131',
-        img: swimmingPoolImg,
-        title: 'Soin piscine & Jardin',
-        description: <>Nous <strong>maintenons votre piscine et vos espaces verts en parfait état</strong>, assurant un cadre extérieur aussi accueillant et soigné que l’intérieur de votre propriété.</>
     },
 ]
 
 const Services = () => {
     return (
         <Box
-            bgcolor='#CBA67E'
+            bgcolor='#e9d4bc'
             sx={{
                 marginTop: {
                     xs: '150px',
@@ -93,36 +75,36 @@ const Services = () => {
                 sx={{
                     width: '100vw',
                     padding: {
-                        xs: '40px 7% 60px 7%',
-                        md: '40px 7% 80px 7%'
+                        xs: '40px 5vw 60px 5vw',
+                        md: '40px 5vw 80px 5vw'
                     }
                 }}
             >
-                <Grid
-                    id='services'
-                    container
-                    spacing={5}
-                    align="center" 
+                <Stack 
+                    id='services' 
+                    marginTop='-162px'
                     sx={{
-                        marginTop: '-218px',
-                        scrollMarginTop: '70px',
+                        rowGap: {
+                            xs: '40px',
+                            md: '100px'
+                        }
                     }}
-                    >
-                    {servicesContent.map((card) => (
-                        <Grid item xs={12} sm={12} md={6} lg={4} key={card.id} >
-                            <ServiceCard 
-                                bgcolor={card.bgcolor} 
-                                borderColor={card.borderColor} 
-                                dividerColor={card.dividerColor}
-                                titleColor={card.titleColor}
-                                textColor={card.textColor}
-                                img={card.img}
-                                title={card.title}
-                                description={card.description}
-                            />
-                        </Grid>
-                    ))}
-                </Grid>                
+                >
+                    {
+                        servicesContent.map((service) => {
+                            return(
+                                <ServiceCard2 
+                                    key={service.id}
+                                    direction={service.direction}
+                                    title={service.title}
+                                    img={service.img}
+                                    description={service.description}
+                                />
+                            )   
+                            
+                        })
+                    }
+                </Stack>
             </Container>
         </Box>
     );

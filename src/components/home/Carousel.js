@@ -1,6 +1,6 @@
 // Import des libs externes
 import React, { useEffect, useState } from 'react';
-import { Stack } from '@mui/material';
+import { Stack, useTheme, useMediaQuery } from '@mui/material';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
@@ -12,25 +12,17 @@ import Banner from "./Banner";
 import { bannersContent } from '../../content/banners/bannersContent';
 
 // Import des images de fond / mobile / tablette
-import img1 from '../../medias/images/house-8274529_1280.jpg';
-import img2 from '../../medias/images/pexels-rachel-claire-4577191.jpg';
-import img3 from '../../medias/images/pexels-jonathanborba-5563472.jpg';
+import img1 from '../../medias/images/house.webp';
+import img2 from '../../medias/images/customers.webp';
+import img3 from '../../medias/images/management.webp';
 
-const Carousel = () => {
+const Carousel = ({ setImagesLoaded, isAnimationEnded }) => {
 
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [imagesLoaded, setImagesLoaded] = useState(false);
+  const [thumbnails] = useState([img1, img2, img3]);
 
-    useEffect(() => {
-        const images = [img1, img2, img3];
-        Promise.all(images.map(image => {
-            return new Promise((resolve) => {
-                const img = new Image();
-                img.src = image;
-                img.onload = resolve;
-            });
-        })).then(() => setImagesLoaded(true));
-    }, []);
+  const theme = useTheme();
+  const isMd = useMediaQuery(theme.breakpoints.up('md'));
 
   const settings = {
     dots: true,  // Affiche les points de navigation en bas du carousel
@@ -41,79 +33,85 @@ const Carousel = () => {
     swipeToSlide: true,  // Permet de swiper directement à une diapositive spécifique
     touchThreshold: 10,  // Sensibilité du swipe, valeur plus basse = plus sensible
     arrows: false,
-    autoplay: imagesLoaded, // Active le défilement automatique une fois les images chargées
-    autoplaySpeed: 6500,  
-    afterChange: (current) => setCurrentSlide(current),
+    autoplay: false, // Active le défilement automatique une fois les images chargées
+    afterChange: (current) => {
+      setCurrentSlide(current);
+    },
+    customPaging: (i) => (
+      <div>
+        <img src={thumbnails[i]} alt={`Thumbnail ${i}`} style={{ width: '50px', height: '50px', objectFit: 'cover' }} />
+      </div>
+    ),
     appendDots: dots => (
-        <div style={{ position: "absolute", bottom: "10px", width: "100%" }}>
-          <ul style={{ margin: "0px", padding: "0 0 15px 0" }}> {dots} </ul>
+        <div style={{ 
+          display: isMd ? 'block' : 'none',
+          position: "absolute", 
+          right: '40px', 
+          bottom: '50%', 
+          transform: 'translate(0, 50%)', 
+          height: 'fit-content', 
+          width: '50px' }}
+        >
+          <ul style={{ 
+            display: 'flex', 
+            flexDirection: 'column', 
+            gap: '60px 0',
+            margin: "0px", 
+            padding: "0" }}
+          > 
+            {dots} 
+          </ul>
         </div>
       ),
   };
 
+  useEffect(() => {
+    const images = [img1, img2, img3];
+    const loadImages = Promise.all(images.map(image => {
+      return new Promise((resolve) => {
+        const img = new Image();
+        img.src = image;
+        img.onload = resolve;
+      });
+    }));
+
+    const minimumDelay = new Promise(resolve => setTimeout(resolve, 3000));
+
+    Promise.all([loadImages, minimumDelay]).then(() => {
+      setImagesLoaded(true);
+    });
+  }, [setImagesLoaded]);
+
   return (
-    <Slider className='custom-slider' {...settings} >
-       <Stack
-          sx={{
+    <>
+      <Slider className='custom-slider' {...settings} >
+        {[img1, img2, img3].map((img, index) => (
+          <Stack
+            key={index}
+            sx={{
               minHeight: '100vh',
               width: '100vw',
-              backgroundImage: `linear-gradient(180deg, rgb(0 0 0 / 17%) 0%, rgb(0 0 0 / 58%) 50%, rgb(0 0 0 / 75%) 100%), url(${img1})`,
+              backgroundImage: `url(${img})`,
               backgroundSize: 'cover',
               backgroundRepeat: 'no-repeat',
               backgroundPosition: 'center bottom 30%',
               flexShrink: '0',
-              justifyContent: 'flex-end'
-          }}
-        >
-          <Banner  
-            index={0}
-            topTitle={bannersContent[0].topTitle}
-            bottomTitle={bannersContent[0].bottomTitle}
-            description={bannersContent[0].description}
-            currentSlide={currentSlide}
-          />
-        </Stack>
-        <Stack
-          sx={{
-              minHeight: '100vh',
-              width: '100vw',
-              backgroundImage: `linear-gradient(180deg, rgb(0 0 0 / 17%) 0%, rgb(0 0 0 / 58%) 50%, rgb(0 0 0 / 75%) 100%), url(${img2})`,
-              backgroundSize: 'cover',
-              backgroundRepeat: 'no-repeat',
-              backgroundPosition: 'center bottom 30%',
-              flexShrink: '0',
-              justifyContent: 'flex-end'
-          }}
-        >
-          <Banner  
-            index={1}
-            topTitle={bannersContent[1].topTitle}
-            bottomTitle={bannersContent[1].bottomTitle}
-            description={bannersContent[1].description}
-            currentSlide={currentSlide}
-          />
-        </Stack>
-        <Stack
-          sx={{
-              minHeight: '100vh',
-              width: '100vw',
-              backgroundImage: `linear-gradient(180deg, rgb(0 0 0 / 17%) 0%, rgb(0 0 0 / 58%) 50%, rgb(0 0 0 / 75%) 100%), url(${img3})`,
-              backgroundSize: 'cover',
-              backgroundRepeat: 'no-repeat',
-              backgroundPosition: 'center',
-              flexShrink: '0',
-              justifyContent: 'flex-end'
-          }}
-        >
-          <Banner  
-            index={2}
-            topTitle={bannersContent[2].topTitle}
-            bottomTitle={bannersContent[2].bottomTitle}
-            description={bannersContent[2].description}
-            currentSlide={currentSlide}
-          />
-        </Stack>
-    </Slider>
+              justifyContent: 'flex-end',
+            }}
+          >
+            <Banner  
+              index={index}
+              isAnimationEnded={isAnimationEnded}
+              topTitle={bannersContent[index].topTitle}
+              bottomTitle={bannersContent[index].bottomTitle}
+              description={bannersContent[index].description}
+              currentSlide={currentSlide}
+            />
+          </Stack>
+        ))}
+      </Slider>
+    </>
+    
   );
 };
 

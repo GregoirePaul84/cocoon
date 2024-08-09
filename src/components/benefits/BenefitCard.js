@@ -1,4 +1,4 @@
-import { Stack, Box, Typography } from '@mui/material';
+import { Stack, Typography } from '@mui/material';
 import React from 'react';
 
 const BenefitCard = ({ icon, title, text }) => {
@@ -16,8 +16,8 @@ const BenefitCard = ({ icon, title, text }) => {
                     width: '100px',
                     borderRadius: '50%',
                     bgcolor: '#EAC985',
-                    border: '2px solid #6C462A',
-                    boxShadow: '-15px -17.5px 0 #6C462A',
+                    border: '2px solid #58371f',
+                    boxShadow: '-15px -17.5px 0 #58371f',
                 }}
             >
                 {icon}
@@ -43,6 +43,7 @@ const BenefitCard = ({ icon, title, text }) => {
                 fontWeight='400'
                 sx={{
                     color: '#C69F73',
+                    maxWidth: '500px',
                     padding: {
                         xs: '0',
                         sm: '0 20px',

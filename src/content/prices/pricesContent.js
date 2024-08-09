@@ -8,8 +8,8 @@ export const pricesContent = [
         bgGradient: 'rgba(69, 50, 0, 0.62)',
         bgImg: goldKeyImg,
         bgColor: '#71582D',
-        title: <>Service "clés en <br />main"</>,
-        subtitle: 'Pour les propriétaires qui souhaitent une gestion totale et sans soucis de leur propriété',
+        title: <>Service "clés en main"</>,
+        subtitle: 'Pour les propriétaires souhaitant une gestion totale et sans soucis',
         price: '25%',
         servicesList: [
             {
@@ -18,34 +18,42 @@ export const pricesContent = [
             },
             {
                 id: 1,
-                description: 'Gestion des réservations'
+                description: 'Achat des fournitures sur facture (literie, vaisselle...)'
             },
             {
                 id: 2,
-                description: 'Entrée / sortie des voyageurs'
+                description: 'Gestion des réservations'
             },
             {
                 id: 3,
-                description: 'Assistance voyageurs 24 / 7'
+                description: 'Création d\'un livret d\'accueil personnalisé'
             },
             {
                 id: 4,
-                description: 'Ménage de qualité hôtelière'
+                description: 'Entrée / sortie des voyageurs'
             },
             {
                 id: 5,
-                description: 'Gestion du linge (non fourni)'
+                description: 'Assistance voyageurs 24 / 7'
             },
             {
                 id: 6,
-                description: 'Réassort des produits de première nécessité (papier toilette, savon...)'
+                description: 'Ménage de qualité hôtelière'
             },
             {
                 id: 7,
-                description: 'Réassort des produits secondaires (thé, café, huile, shampoing, gel douche...)'
+                description: 'Gestion du linge (non fourni)'
             },
             {
                 id: 8,
+                description: 'Réassort des produits de première nécessité (papier toilette, savon...)'
+            },
+            {
+                id: 9,
+                description: 'Réassort des produits secondaires (thé, café, huile, shampoing, gel douche...)'
+            },
+            {
+                id: 10,
                 description: 'Petits entretiens (changement ampoules, débouchage, nettoyage des filtres de climatisation...)'
             },
         ]
@@ -55,8 +63,8 @@ export const pricesContent = [
         bgGradient: 'rgba(69, 69, 69, 0.62)',
         bgImg: silverKeyImg,
         bgColor: '#746F68',
-        title: <>Service "clés en <br />confort"</>,
-        subtitle: 'Pour les propriétaires qui souhaitent se libérer des tâches chronophages',
+        title: <>Service "clés confort"</>,
+        subtitle: 'Pour les propriétaires souhaitant se libérer des tâches chronophages',
         price: '20%',
         servicesList: [
             {
@@ -90,8 +98,8 @@ export const pricesContent = [
         bgGradient: 'rgba(42, 30, 0, 0.60)',
         bgImg: bronzeKeyImg,
         bgColor: '#68563A',
-        title: <>Service "clés en <br />essentielles"</>,
-        subtitle: 'Pour les propriétaires principalement intéressés par la gestion des aspects essentiels de la location',
+        title: <>Service "clés essentielles"</>,
+        subtitle: 'Pour les propriétaires intéressés par les aspects essentiels de la location',
         price: '15%',
         servicesList: [
             {

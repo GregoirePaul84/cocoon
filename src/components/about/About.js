@@ -1,12 +1,29 @@
 import { Stack, Box, Container, Divider, Typography, Button } from '@mui/material';
 import React from 'react';
-import gregoireImg from '../../medias/images/DSC_8437.JPG';
-import gregoireDesktopImg from '../../medias/images/DSC_8437_inverted.JPG';
+import gregoireImg from '../../medias/images/DSC_8517_contrast.webp';
 import { useScroll } from '../utils/ScrollContext';
+import { useInView } from 'react-intersection-observer';
+import { keyframes } from '@mui/system';
+
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+`;
 
 const About = () => {
 
     const { scrollTo } = useScroll();
+
+    const { ref, inView } = useInView({
+        triggerOnce: true, // Animation déclenchée une seule fois
+        threshold: 0.5, // Déclenchement lorsque 10% de l'élément est visible
+    });
 
     return (
         <Stack 
@@ -14,7 +31,7 @@ const About = () => {
             sx={{
                 backgroundColor: {
                     xs: 'inherit',
-                    md: '#504131'
+                    md: 'rgb(64 51 38)'
                 }
             }}
         >
@@ -30,7 +47,7 @@ const About = () => {
                         md: '20vw',
                         lg: '35vw'
                     },
-                    bgcolor: '#504131'
+                    bgcolor: 'rgb(64 51 38)'
                 }}
             />
             <Box
@@ -45,17 +62,13 @@ const About = () => {
                     backgroundImage: {
                         xs: `linear-gradient(180deg, rgba(40,24,12,0.47) 0%, rgba(40,24,12,0.8) 100%), url(${gregoireImg})`,
                         md: `
-                            linear-gradient(to right, rgba(80, 65, 49, 1) 0%, rgba(80, 65, 49, 0) 70%),
-                            linear-gradient(rgba(40, 24, 12, 0.47), rgba(40, 24, 12, 0.47)), 
-                            url(${gregoireDesktopImg})
+                            linear-gradient(to right, rgba(64, 51, 38, 1) 0%, rgba(64, 51, 38, 0) 70%),
+                            url(${gregoireImg})
                             `,
                     },
                     backgroundSize: 'cover',  
                     backgroundRepeat: 'no-repeat',  
-                    backgroundPosition: {
-                        xs: 'top left',
-                        md: 'top left'
-                    },  
+                    backgroundPosition: 'center',
                     scrollMarginTop: '70px'
                 }}
             >
@@ -63,6 +76,7 @@ const About = () => {
                     maxWidth={false}
                     disableGutters
                     sx={{
+                        position: 'relative',
                         height: '100%',
                         width: '100%',
                         padding: {
@@ -72,6 +86,7 @@ const About = () => {
                     }}
                 >
                     <Stack
+                        ref={ref}
                         sx={{
                             maxWidth: {
                                 xs: 'none',
@@ -84,7 +99,10 @@ const About = () => {
                             right: {
                                 md: '20%',
                                 lg: '50%'
-                            }
+                            },
+                            opacity: inView ? 1 : 0,
+                            transform: inView ? 'translateX(0)' : 'translateX(20px)',
+                            animation: inView ? `${fadeIn} 1s ease-out` : 'none',
                         }}
                     >
                         <Stack 
@@ -97,12 +115,12 @@ const About = () => {
                             }}
                         >
                             <Typography
-                                align='center'
+                                align='left'
                                 component='h2'
                                 fontFamily='cormorant, serif'
                                 fontWeight='600'
                                 textTransform='uppercase'
-                                lineHeight='1.2'
+                                lineHeight='1.6'
                                 sx={{
                                     color: '#fff',
                                     fontSize: {
@@ -111,23 +129,23 @@ const About = () => {
                                     }
                                 }}
                             >
-                                Votre concierge
+                                Votre <br />concierge
 
                             </Typography>
                             <Divider
                                 variant='middle'
                                 sx={{
-                                    width: '100px',
+                                    width: '150px',
                                     borderColor: '#EAC985',
                                     borderBottomWidth: '2px',
-                                    alignSelf: 'center'
+                                    // alignSelf: 'center'
                                 }}
                             />
                         </Stack>
                         <Stack spacing={2}>
                             <Typography
                                 fontFamily='Comorant, serif'
-                                fontSize='2.5em'
+                                fontSize='2.7em'
                                 fontWeight='300'
                                 fontStyle='italic'
                                 lineHeight='2'
@@ -137,10 +155,10 @@ const About = () => {
                             >
                                 Bonjour !
                             </Typography>
-                            <Stack spacing={3} >
+                            <Stack spacing={6} >
                                 <Typography
                                     fontFamily='Dosis, sans-serif'
-                                    fontSize='1.2em'
+                                    fontSize='1.4em'
                                     fontWeight='300'
                                     lineHeight='2'
                                     sx={{
@@ -151,7 +169,7 @@ const About = () => {
                                 </Typography>
                                 <Typography
                                     fontFamily='Dosis, sans-serif'
-                                    fontSize='1.2em'
+                                    fontSize='1.4em'
                                     fontWeight='300'
                                     lineHeight='2'
                                     sx={{
@@ -159,17 +177,6 @@ const About = () => {
                                     }}
                                 >
                                     À 34 ans, j'ai choisi de poser mes valises dans cette magnifique région, riche en culture et en beauté naturelle, pour me consacrer à mon objectif : <strong>proposer un service de conciergerie de qualité.</strong>
-                                </Typography>
-                                <Typography
-                                    fontFamily='Dosis, sans-serif'
-                                    fontSize='1.2em'
-                                    fontWeight='300'
-                                    lineHeight='2'
-                                    sx={{
-                                        color: '#fff'
-                                    }}
-                                >
-                                    Après plusieurs années d'expérience dans le conseil clientèle de luxe, je mets à présent mon savoir-faire au service des propriétaires exigeants, désireux de maximiser leurs revenus locatifs sans tracas.
                                 </Typography>
                             </Stack>              
                         </Stack>
@@ -201,6 +208,20 @@ const About = () => {
                                 Contactez-moi !
                             </Button>
                         </Stack>     
+                    </Stack>
+                    <Stack 
+                        sx={{
+                            position: {
+                                xs: 'static',
+                                md: 'absolute'
+                            },
+                            bottom: '20px',
+                            right: '30px'
+                        }}
+                    >
+                        <Typography align='center' color='#fff' fontWeight='100' >
+                            Photographie : Jean-Michel André - Barjac
+                        </Typography>
                     </Stack>
                 </Container>
             </Box>

@@ -19,8 +19,8 @@ const SkillCard = ({ icon, title, description }) => {
                         width: '60px',
                         borderRadius: '50%',
                         bgcolor: '#EAC985',
-                        border: '2px solid #6C462A',
-                        boxShadow: '-8px -5.5px 0 #6C462A'
+                        border: '2px solid #58371f',
+                        boxShadow: '-8px -5.5px 0 #58371f'
                     }}
                 >
                     {icon}
@@ -54,6 +54,8 @@ const SkillCard = ({ icon, title, description }) => {
                 fontFamily='Dosis, sans-serif'
                 fontSize='1.3em'
                 fontWeight='400'
+                lineHeight='2'
+                padding='0 10%'
                 sx={{
                     color: '#C69F73'
                 }}

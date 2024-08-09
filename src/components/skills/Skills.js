@@ -8,19 +8,19 @@ import SkillCard from './SkillCard';
 const skillsContent = [
     {
         id: 0,
-        icon: <DiamondOutlinedIcon sx={{ fontSize: '40px', color: '#6C462A', position: 'relative', top: '2px'}} />,
-        title: <>Caractère <br /> perfectionniste</>,
+        icon: <DiamondOutlinedIcon sx={{ fontSize: '40px', color: '#58371f', position: 'relative', top: '2px'}} />,
+        title: <>Travail <br /> soigné</>,
         description: 'Chaque détail de la gestion de votre propriété sera traitée avec précision.'
     },
     {
         id: 1,
-        icon: <HandshakeOutlinedIcon sx={{ fontSize: '40px', color: '#6C462A', position: 'relative', top: '2px'}} />,
+        icon: <HandshakeOutlinedIcon sx={{ fontSize: '40px', color: '#58371f', position: 'relative', top: '2px'}} />,
         title: <>Honnêteté et <br /> transparence</>,
         description: 'Pas de frais cachés, une communication claire et des rapports détaillés pour une totale tranquillité d\'esprit.'
     },
     {
         id: 2,
-        icon: <PhoneInTalkOutlinedIcon sx={{ fontSize: '40px', color: '#6C462A', position: 'relative', top: '2px'}} />,
+        icon: <PhoneInTalkOutlinedIcon sx={{ fontSize: '40px', color: '#58371f', position: 'relative', top: '2px'}} />,
         title: <>Diplomatie et <br /> réactivité</>,
         description: 'Une gestion des litiges réactive et dans le calme, une prise en charge rapide des communications.'
     },

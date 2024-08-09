@@ -21,13 +21,14 @@ const Header = () => {
 
     return (
         <AppBar 
-        id='top'
+            id='top'
             position='absolute'
             sx={{
                 height: { xs: '70px', sm: '80px', md: '110px' },
                 width: '100%',
                 bgcolor: 'transparent',
-                boxShadow: 'none'
+                boxShadow: 'none',
+                zIndex: '900'
             }}
         >
             <Toolbar sx={{ justifyContent: 'space-between' }}>
@@ -91,7 +92,7 @@ const Header = () => {
                                     my: 2,
                                     display: 'block',
                                     fontFamily: '"Dosis", sans-serif',
-                                    fontWeight: '400',
+                                    fontWeight: '200',
                                     fontSize: { md: '2em' },
                                     position: 'relative',
                                     zIndex: 1

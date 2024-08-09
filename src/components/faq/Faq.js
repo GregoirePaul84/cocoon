@@ -62,7 +62,7 @@ const Faq = () => {
 
     return (
         <Box
-            bgcolor='#CBA67E'
+            bgcolor='#fff5e0'
         >
             <Container
                 sx={{

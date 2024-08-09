@@ -1,8 +1,8 @@
-import { Container, Stack, Typography } from '@mui/material';
+import { Container, Grid, Stack, Typography } from '@mui/material';
 import React from 'react';
 import { stepsContent } from '../../content/steps/stepsContent';
-import StepPart from './StepPart';
 import { useScroll } from '../utils/ScrollContext';
+import StepPart2 from './StepPart2';
 
 const Steps = () => {
 
@@ -40,25 +40,21 @@ const Steps = () => {
                             color: '#6C462A'
                         }}
                     >
-                        Comment faire ?
+                        Comment se passe la suite ?
                     </Typography>
                 </Stack>
-                <Stack
-                    sx={{
-                        alignItems: {
-                            xs: 'flex-start',
-                            md: 'center'
-                        }
-                    }}
-                >
-                    {
-                        content.map((step, index) => {
-                            return(
-                                <StepPart key={step.id} step={step} isArrowVisible={content.length - 1 === index} />
-                            )
-                        })
-                    }
-                </Stack> 
+                <Grid container spacing={2}>
+                    {content.map((step) => (
+                        <Grid item xs={12} md={6} lg={4} key={step.id}>
+                            <StepPart2 
+                                number={step.id} 
+                                img={step.img} 
+                                title={step.title} 
+                                description={step.description} 
+                            />
+                        </Grid>
+                    ))}
+                </Grid>
             </Stack>
         </ Container>
     );

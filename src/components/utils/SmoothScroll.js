@@ -32,10 +32,10 @@ const SmoothScroll = ({ children }) => {
                 el: scrollContainerRef.current,
                 smooth: true,
                 smartphone: {
-                    smooth: true
+                    smooth: false // Désactivé sur les smartphones
                 },
                 tablet: {
-                    smooth: true
+                    smooth: false // Désactivé sur les tablettes
                 }
             });
 
@@ -45,6 +45,7 @@ const SmoothScroll = ({ children }) => {
 
     // Mise à jour de locomotive scroll : premier rendu et resize
     useEffect(() => {
+        
         const handleUpdate = () => {
             if (timeoutRef.current) {
                 clearTimeout(timeoutRef.current);
@@ -72,7 +73,7 @@ const SmoothScroll = ({ children }) => {
             }
         };
     }, []);
-    
+
     return (
         <ScrollContext.Provider value={{ scrollTo: handleScrollToElement, locomotiveScroll: locomotiveScroll }}>
             <ScrollToTopBtn />
