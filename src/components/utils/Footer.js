@@ -51,10 +51,12 @@ const Footer = () => {
                 </Stack>
             </Stack>
             <Stack 
-                direction='row'
+                direction={{ xs: 'column', sm: 'row' }}
                 width='100vw'
                 justifyContent='center'
+                alignItems='center'
                 columnGap='40px'
+                rowGap='20px'
             >
                 <Typography
                     component='p'
@@ -79,7 +81,13 @@ const Footer = () => {
                 <Typography
                     component='p'
                     fontFamily='"Dosis", sans-serif'
-                    sx={{ color: '#eac985' }}
+                    sx={{ 
+                        color: '#eac985',
+                        display: {
+                            xs: 'none',
+                            sm: 'inline'
+                        }
+                    }}
                 >
                     | 
                 </Typography>

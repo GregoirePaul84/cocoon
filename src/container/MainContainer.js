@@ -24,6 +24,8 @@ const MainContainer = () => {
 
     useEffect(() => {
         if(imagesLoaded) {
+            console.log('exit anim');
+            
             setIsExiting(true);
         }
     }, [imagesLoaded]);

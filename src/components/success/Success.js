@@ -25,7 +25,7 @@ const Success = () => {
                     <Typography color='#fff' fontSize='1.2em' fontWeight='200' lineHeight='2'>
                         Nous reviendrons vers vous dans les plus brefs délais.
                     </Typography>
-                    <a href="http://localhost:3000/cocoon/">
+                    <a href="https://conciergerie-cocoon.fr/">
                         <Button
                             variant='contained'
                             sx={{ 

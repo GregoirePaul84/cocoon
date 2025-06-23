@@ -102,7 +102,7 @@ const LoadingOverlay = ({ isExiting, imagesLoaded, setIsAnimationEnded }) => {
               strokeWidth: 5,
               strokeDasharray: '200',
               strokeDashoffset: '200',
-              animation: `${draw} 2s ease forwards, ${disappear} 1s ease forwards 4s`,
+              animation: `${draw} 2s ease forwards 2s, ${disappear} 1s ease forwards 4s`,
             },
           }}
         >

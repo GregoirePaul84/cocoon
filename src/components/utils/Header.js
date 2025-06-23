@@ -54,7 +54,7 @@ const Header = () => {
                     transformOrigin={{ vertical: 'top', horizontal: 'left' }}
                     open={Boolean(anchorElNav)}
                     onClose={handleCloseNavMenu}
-                    sx={{ display: { xs: 'block', md: 'none' }, '& .MuiMenu-paper': { bgcolor: '#E6C9A8' } }}
+                    sx={{ display: { xs: 'block', md: 'none' }, '& .MuiMenu-paper': { bgcolor: '#eac985' } }}
                 >
                 {pages.map((page) => (
                     <MenuItem key={page.name} onClick={() => {
@@ -62,7 +62,7 @@ const Header = () => {
                         scrollTo(page.name.toLowerCase(), page.offset);
                         }}
                     >
-                    <Typography align="center" fontFamily='"Dosis", sans-serif' fontWeight='500'>
+                    <Typography align="center" fontFamily='"Dosis", sans-serif' fontWeight='600'>
                         {page.name}
                     </Typography>
                     </MenuItem>

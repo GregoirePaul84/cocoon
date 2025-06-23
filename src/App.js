@@ -11,7 +11,7 @@ export function App() {
   return (
     <>
       <CssBaseline />
-      <BrowserRouter basename="/cocoon">
+      <BrowserRouter>
         <Routes>
           <Route path="/" element={<MainContainer />} />
           <Route path="/success" element={<Success />} />

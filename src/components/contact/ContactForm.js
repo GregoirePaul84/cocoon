@@ -37,7 +37,7 @@ const CustomTextarea = styled('textarea')({
 const ContactForm = () => {
     const formSpreeKey = process.env.REACT_APP_FORMSPREE_KEY;
 
-    const [submit] = useForm(formSpreeKey);
+    const [_, submit] = useForm(formSpreeKey);
     const [formData, setFormData] = useState({
         nom: '',
         prenom: '',
@@ -93,7 +93,9 @@ const ContactForm = () => {
             handleCloseValidation();       
             navigate('/success');
 
-        } catch (error) {            
+        } catch (error) {          
+            console.log(error);
+              
             setDisplayError({ display: true, message: 'Une erreur est survenue lors de l\'envoi du formulaire. Merci de réessayer ultérieurement ou de privilégier le contact téléphonique au 04.48.15.08.72.' });
         }
     };
@@ -210,8 +212,21 @@ const ContactForm = () => {
                     />
                 </Stack>
                 <Stack spacing={2} marginBottom='40px'>
-                    <Stack direction='row' justifyContent='space-between'>
-                        <Stack width='45%'>
+                    <Stack 
+                        direction={{xs: 'column', sm: 'row'}} 
+                        justifyContent='space-between'
+                        sx={{
+                            alignItems: {
+                                xs: 'center',
+                                sm: 'flex-start'
+                            },
+                            rowGap: {
+                                xs: '40px',
+                                sm: '0'
+                            }
+                        }}
+                    >
+                        <Stack width='45%' minWidth='272px'>
                             <Typography
                                 component='h3'
                                 fontFamily='"Dosis", sans-serif'
@@ -236,7 +251,7 @@ const ContactForm = () => {
                                 </RadioGroup>
                             </FormControl>
                         </Stack>
-                        <Stack width='45%'>
+                        <Stack width='45%' minWidth='272px'>
                             <Typography
                                 component='h3'
                                 fontFamily='"Dosis", sans-serif'
